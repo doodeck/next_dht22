@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import { getSortedTupleData } from '../lib/tuple'
 
 export async function getStaticProps() {
   const allTupleData = await getSortedTupleData()
-  console.log('allTupleData: ', allTupleData)
+  // console.log('allTupleData: ', allTupleData)
   return {
     props: {
       allTupleData
@@ -29,11 +30,13 @@ export default function Home({ allTupleData }) {
         </h1>
 
         <div className={styles.grid}>
-          {allTupleData.map(() => (
-            <a href="" className={styles.card}>
+          {allTupleData.map((tuple) => (
+            <Link href={`/tuple/${tuple.id}`} className={styles.card}>
+              <div>
               <h2>a Tuple</h2>
               <p>A tuple will appear here</p>
-            </a>
+              </div>
+            </Link>
           ))}
         </div>
       </main>
