@@ -17,6 +17,13 @@ export default function Layout({ children, home }) {
                 />
                 <meta name="og:title" content={siteTitle} />
             </Head>
+            {!home && (
+                <div className={styles.backToHome}>
+                <Link href="/">
+                    <a>← Back to home</a>
+                </Link>
+                </div>
+            )}
             <main>{children}</main>
             {!home && (
                 <div className={styles.backToHome}>
