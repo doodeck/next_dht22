@@ -41,7 +41,7 @@ export default function Tuple({ tupleData }) {
           {tupleData.map((tuple) => {
             // console.log('tuple: ', tuple)
             return(
-              <tr>
+              <tr key={tuple.to_char}>
                 <td>{tuple.id_key}</td>
                 <td>{tuple.to_char}</td>
                 <td>{tuple.gpio}</td>
