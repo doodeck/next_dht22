@@ -14,3 +14,20 @@ a {
 * {
   box-sizing: border-box;
 }
+
+table,th,td {
+  border: 1px solid black;
+  display: table;
+}
+
+th, td {
+  display: table-cell;
+}
+
+td {
+  text-align: center;
+}
+
+thead {
+  background-color: chartreuse;
+}

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import { getSortedTupleData } from '../lib/tuple'
+// import Date from '../components/date'
 
 export async function getStaticProps() {
   const allTupleData = await getSortedTupleData()
@@ -15,7 +16,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allTupleData }) {
-  console.log('allTupleData: ', JSON.stringify(allTupleData))
+  // console.log('allTupleData: ', JSON.stringify(allTupleData))
   return (
     <div className={styles.container}>
       <Head>
@@ -31,10 +32,9 @@ export default function Home({ allTupleData }) {
 
         <div className={styles.grid}>
           {allTupleData.map((tuple) => (
-            <Link href={`/tuple/${tuple.id}`} className={styles.card}>
+            <Link key={`/tuple/${tuple.id}`} href={`/tuple/${tuple.id}`} className={styles.card}>
               <div>
-              <h2>a Tuple</h2>
-              <p>A tuple will appear here</p>
+                <a>{tuple.date}</a>&nbsp;
               </div>
             </Link>
           ))}
