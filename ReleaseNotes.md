@@ -1,2 +1,4 @@
 - 0.0.1
   - first deployed release
+- 0.0.2
+  - added weather parameters at the location (from internet service)

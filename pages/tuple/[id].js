@@ -2,6 +2,7 @@
 
 import { getAllTupleIds, getAllTupleData } from '../../lib/tuple'
 import Layout from '../../components/layout'
+import styles from '../../styles/Tuple.module.css'
 
 export async function getStaticPaths() {
   const paths = await getAllTupleIds()
@@ -33,8 +34,11 @@ export default function Tuple({ tupleData }) {
               <th>esp32</th>
               <th>Timestamp</th>
               <th>gpio</th>
-              <th>Temp [deg]</th>
-              <th>Hum [%]</th>
+              <th className={styles.thead_internal}>Temp [deg]</th>
+              <th className={styles.thead_internal}>Hum [%]</th>
+              <th className={styles.thead_external}>Ext. temp [deg]</th>
+              <th className={styles.thead_external}>Ext. hum [%]</th>
+              <th className={styles.thead_external}>Pressure [hPa]</th>
             </tr>
           </thead>
           <tbody>
@@ -45,8 +49,11 @@ export default function Tuple({ tupleData }) {
                 <td>{tuple.id_key}</td>
                 <td>{tuple.to_char}</td>
                 <td>{tuple.gpio}</td>
-                <td>{tuple.temp}</td>
-                <td>{tuple.hum}</td>
+                <td className={styles.tcolumn_internal}>{tuple.temp}</td>
+                <td className={styles.tcolumn_internal}>{tuple.hum}</td>
+                <td className={styles.tcolumn_external}>{tuple.w_temp}</td>
+                <td className={styles.tcolumn_external}>{tuple.w_hum}</td>
+                <td className={styles.tcolumn_external}>{tuple.pressure}</td>
               </tr>
             )
           })}
