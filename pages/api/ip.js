@@ -5,7 +5,7 @@ const http = require('http')
 export default function handler(request, response) {
     const options = {
         hostname: 'ip-api.com',
-        path: '/',
+        path: '/json',
         headers: {
             'User-Agent': 'curl/7.68.0',
             'Accept': 'application/json'
@@ -24,7 +24,7 @@ export default function handler(request, response) {
 
             res.on('end', () => { // close
                 req.end()
-                response.status(200).send(json_response)
+                response.status(200).json(json_response)
             })
         }
     })
