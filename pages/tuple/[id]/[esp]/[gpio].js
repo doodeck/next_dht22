@@ -42,7 +42,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    console.log('getStaticProps/params: ', params)
+    // console.log('getStaticProps/params: ', params)
     const tupleData = await getFilteredTupleData(params)
     // console.log('getStaticProps/tupleData[', params, ']', tupleData)
     return {
@@ -56,7 +56,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function FilteredTuple({ params, tupleData }) {
-    console.log('FilteredTuple/params: ', params)
+    // console.log('FilteredTuple/params: ', params)
     const dateAll = getIsFilterNone(params.id)
     const espAll = getIsFilterNone(params.esp)
     const gpioAll = getIsFilterNone(params.gpio)
@@ -100,7 +100,7 @@ export default function FilteredTuple({ params, tupleData }) {
           {tupleData.map((tuple) => {
             // console.log('tuple: ', tuple)
             return(
-              <tr key={tuple.to_char}>
+              <tr key={tuple.to_char + "_" + tuple.id_key + "_" + tuple.gpio}>
                 <td>
                 {(espAll && (
                     <Link href={`../../${params.id}/${tuple.id_key}/${params.gpio}`}>
