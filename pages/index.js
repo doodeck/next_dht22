@@ -37,7 +37,7 @@ export default function Home({ allTupleData, filteredTupleIds }) {
 
         <div className={styles.grid}>
           {allTupleData.map((tuple) => (
-            <Link key={`/tuple/${tuple.id}`} href={`/tuple/${tuple.id}/${config.filter.none}/${config.filter.none}`} className={styles.card}>
+            <Link key={`/tuple/${tuple.id}`} href={`/tuple/${tuple.id}/${config.filter.none}/${config.filter.none}`} passHref className={styles.card}>
               <div>
                 <a>{tuple.date}</a>&nbsp;
               </div>
