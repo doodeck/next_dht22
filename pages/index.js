@@ -2,21 +2,26 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import { getSortedTupleData } from '../lib/tuple'
+import { getSortedTupleData, getFilteredTupleIds } from '../lib/tuple'
+import { config } from '../lib/config'
 // import Date from '../components/date'
 
 export async function getStaticProps() {
   const allTupleData = await getSortedTupleData()
+  const filteredTupleIds = await getFilteredTupleIds()
   // console.log('allTupleData: ', allTupleData)
+  // console.log('filteredTupleIds: ', filteredTupleIds)
   return {
     props: {
-      allTupleData
+      allTupleData,
+      filteredTupleIds
     }
   }
 }
 
-export default function Home({ allTupleData }) {
+export default function Home({ allTupleData, filteredTupleIds }) {
   // console.log('allTupleData: ', JSON.stringify(allTupleData))
+  // console.log('filteredTupleIds: ', filteredTupleIds)
   return (
     <div className={styles.container}>
       <Head>
@@ -32,7 +37,7 @@ export default function Home({ allTupleData }) {
 
         <div className={styles.grid}>
           {allTupleData.map((tuple) => (
-            <Link key={`/tuple/${tuple.id}`} href={`/tuple/${tuple.id}`} className={styles.card}>
+            <Link key={`/tuple/${tuple.id}`} href={`/tuple/${tuple.id}/${config.filter.none}/${config.filter.none}`} className={styles.card}>
               <div>
                 <a>{tuple.date}</a>&nbsp;
               </div>
@@ -40,6 +45,22 @@ export default function Home({ allTupleData }) {
           ))}
         </div>
       </main>
+
+      {/* list all possible paths - debug purpose only
+      <div>
+        <ul>
+          {filteredTupleIds.map((tuple) => {
+            // console.log(tuple.params.id)
+            return (
+            <Link key={`${tuple.params.id}_${tuple.params.esp}_${tuple.params.gpio}`} href={`/tuple/${tuple.params.id}/${tuple.params.esp}/${tuple.params.gpio}`} className={styles.card}>
+              <div>
+                <a>{`/tuple/${tuple.params.id}/${tuple.params.esp}/${tuple.params.gpio}`}</a>&nbsp;
+              </div>
+            </Link>
+          )})}
+        </ul>
+      </div>
+      */}
 
       <footer className={styles.footer}>
         <a

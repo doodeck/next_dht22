@@ -6,7 +6,7 @@ import styles from '../../styles/Tuple.module.css'
 
 export async function getStaticPaths() {
   const paths = await getAllTupleIds()
-  // console.log('paths: ', paths)
+  // console.log('paths: ', paths) [ { params: { id: '29122021' } }, ]
   return {
     paths,
     fallback: false
@@ -21,7 +21,6 @@ export async function getStaticProps({ params }) {
       tupleData
     }
   }
-
 }
 
 export default function Tuple({ tupleData }) {
