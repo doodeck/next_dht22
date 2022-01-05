@@ -2,3 +2,5 @@
   - first deployed release
 - 0.0.2
   - added weather parameters at the location (from internet service)
+- 0.0.3
+  - added sorting capabilities
