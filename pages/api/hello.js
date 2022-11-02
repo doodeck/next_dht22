@@ -3,6 +3,6 @@
 export default function handler(req, res) {
   res.status(200).json({
     name: 'John Doe',
-    type: process.env.DEPLOYMENT_TYPE
+    type: process.env.DEPLOYMENT_TYPE || 'unspecified'
   })
 }
