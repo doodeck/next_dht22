@@ -5,3 +5,6 @@ DATABASE_URL="postgres://***********:**************************************@ec2-
 
 # ... or for Supabase
 SUPA_DATABASE_URL="postgresql://postgres:**********@db.xxxxxxxxxxxx.supabase.co:5432/postgres"
+
+# for information purpose only
+DEPLOYMENT_TYPE="Preview"
