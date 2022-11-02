@@ -11,6 +11,7 @@ export default function handler(request, response) {
             'Accept': 'application/json'
         }
       };
+
     const req = http.get(options, (res) => {
         let json_response = '';
         console.log('statusCode:', res.statusCode);
