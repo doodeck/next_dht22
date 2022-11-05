@@ -12,6 +12,7 @@ app.get('/weather', function (req, res) { // test weather api connection
 */
 
 export default function handler(req, res) {
+    console.log('weather.js:handler')
     weather.logWeather()
     res.status(200).json({ status: 'OK' })
     /*
