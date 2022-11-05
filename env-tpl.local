@@ -1,8 +1,5 @@
 # template of .env.local file and the variables you need to set in vercel
 
-# the DB String you get from Heroku
-DATABASE_URL="postgres://***********:**************************************@ec2-xx-xx-xx-xx.eu-west-1.compute.amazonaws.com:5432/**********"
-
 # ... or for Supabase
 SUPA_DATABASE_URL="postgresql://postgres:**********@db.xxxxxxxxxxxx.supabase.co:5432/postgres"
 
