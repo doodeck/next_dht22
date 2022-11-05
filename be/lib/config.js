@@ -7,7 +7,7 @@ const config = {
         'id=3083829', // city id - Szczecin
         `appid=${process.env.OPENWEATHER_KEY}`
     ],
-    pollinterval: '1 hour' // format postgresql interval
+    pollinterval: '1 hour' // '1 minutes' // format postgresql interval: https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-INTERVAL-INPUT
 }
 
 module.exports = {
