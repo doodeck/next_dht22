@@ -1,5 +1,9 @@
 // index.js
 
+return; // this file is only to be used as a reference, with express routes
+// to be moved to pages/api/be/ endpoints
+
+
 const express = require('express')
 const auth = require('./authentication.js')
 const db = require('./db/db.js')
