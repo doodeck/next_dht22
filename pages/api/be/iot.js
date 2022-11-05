@@ -16,7 +16,8 @@ app.get('/', function (req, res) {
 export default function handler(req, res) {
     console.log('iot.js:handler')
     auth(req, res, () => {
-        weather.logWeather() // deliberately not waited for   
-        db.insert(req,res)
+        weather.logWeather(() => { // TODO: relocate logWeather() to a separate cron activated endpoint
+            db.insert(req,res)
+        })
     })
 }
