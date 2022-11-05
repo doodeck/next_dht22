@@ -25,10 +25,10 @@ function insert(req, res) {
       if (err) {
         console.log(err.stack)
         console.log("Error " + err)
-        res.sendStatus(500)
+        res.status(500).send()
       } else {
         console.log(result.rows[0])
-        res.sendStatus(200)
+        res.status(200).send()
       }
     })
   })

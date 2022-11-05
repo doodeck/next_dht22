@@ -17,7 +17,7 @@ export default function handler(req, res) {
             if (!!err) {
                 console.err(JSON.stringify(err))
             }
-            res.status(200).json({ status: !!err ? 'error': 'OK!' })
+            res.status(200).json({ status: !!err ? 'error': 'OK' })
         })
     })
 /*
