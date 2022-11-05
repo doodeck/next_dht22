@@ -6,6 +6,7 @@ const db = require('../db/db.js')
 
 function getWeather(callback) {
     const url = config.url + '?' + config.parameters.join('&')
+    console.log('URL: ', url)
     const req = https.get(url, (res) => {
         let json_response = '';
         console.log('statusCode:', res.statusCode);

@@ -3,5 +3,8 @@
 # ... or for Supabase
 SUPA_DATABASE_URL="postgresql://postgres:**********@db.xxxxxxxxxxxx.supabase.co:5432/postgres"
 
+# For Open Weather
+OPENWEATHER_KEY="*******************************"
+
 # for information purpose only
 DEPLOYMENT_TYPE="Preview"
