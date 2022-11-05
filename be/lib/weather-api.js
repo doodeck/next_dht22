@@ -34,7 +34,7 @@ function getWeather(callback) {
 }
 
 // run asynchroneously in background, response not needed
-function logWeather() {
+function logWeather(callback) {
     db.getWeatherInterval((interval) => {
         if (interval > 0.) { // becomes positive when time since the latest DB table updated exceeds config.pollinterval
             getWeather((res) => {
@@ -42,8 +42,16 @@ function logWeather() {
                 // console.log('weather_data: ', weather_data)
                 console.log('temp: ', weather_data.main.temp, 'hum: ', weather_data.main.humidity,
                             'pressure: ', weather_data.main.pressure)
-                db.appendWeather(weather_data.main)
+                db.appendWeather(weather_data.main, (err) => {
+                    if (!!callback) {
+                        callback(err)
+                    }
+                })
             })
+        } else {
+            if (!!callback) {
+                callback()
+            }
         }
     })
 }

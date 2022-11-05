@@ -35,7 +35,7 @@ function insert(req, res) {
 }
 
 // deliberately error not sent back, only logged to the console - background usage
-function appendWeather(data_main) {
+function appendWeather(data_main, callback) {
   const sqlquery = 'INSERT INTO weather (temp, hum, pressure) VALUES ($1, $2, $3);'
   const values = [data_main.temp, data_main.humidity,data_main.pressure]
 
@@ -48,8 +48,14 @@ function appendWeather(data_main) {
       if (err) {
         console.error(err.stack)
         console.error("Error(1) " + err)
+        if (!!callback) {
+          callback(err)
+        }
       } else {
         console.log(result.rows[0])
+        if (!!callback) {
+          callback()
+        }
       }
     })
   })
