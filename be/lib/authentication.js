@@ -15,7 +15,7 @@ module.exports = function (req, res, next) {
         next()
     } else {
         console.error('Unauthorized id:', req.query.id)
-        res.sendStatus(401)
+        res.status(401).send('Authorization failed')
     }
 }
 

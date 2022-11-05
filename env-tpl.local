@@ -6,5 +6,8 @@ SUPA_DATABASE_URL="postgresql://postgres:**********@db.xxxxxxxxxxxx.supabase.co:
 # For Open Weather
 OPENWEATHER_KEY="*******************************"
 
+# must match the database table credentials_ids. TODO: keep it in one place only
+AUTH_IDS="************,************"
+
 # for information purpose only
 DEPLOYMENT_TYPE="Preview"
