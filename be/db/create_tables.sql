@@ -23,6 +23,6 @@ CREATE TABLE measurements ( -- internal temperature and humidity
 );
 
 -- not so important, but still used for test purpose:
-CREATE TABLE test_table (id integer , name text);
+CREATE TABLE test_table (id integer PRIMARY KEY, name text);
 INSERT INTO test_table VALUES (1, 'hello database');
 INSERT INTO test_table VALUES (2, 'greeting postgresql');
