@@ -8,8 +8,13 @@ const db = require("../../../be/db/db");
 })*/
 
 export default function handler(req, res) {
-    // don't release productively - DB strain risk getFilteredTupleIds()
-    // res.status(200).json({ status: 'OK' })
-    db.test(req, res)
+    // you should never reject that Promise
+    //   https://github.com/vercel/next.js/issues/10439#issuecomment-583214126
+    return new Promise((resolve, reject) => {
+        // don't release productively - DB strain risk getFilteredTupleIds()
+        db.test(req, res, (err) => {
+            return resolve()
+        })
+    })
   }
   

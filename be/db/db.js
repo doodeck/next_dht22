@@ -25,10 +25,10 @@ function insert(req, res) {
       if (err) {
         console.log(err.stack)
         console.log("Error " + err)
-        res.status(500).send()
+        res.status(500).end()
       } else {
         console.log(result.rows[0])
-        res.status(200).send()
+        res.status(200).end()
       }
     })
   })
@@ -85,17 +85,24 @@ function getWeatherInterval(callback) {
 
 }
 
-async function db_test(req, res) {
+async function db_test(req, res, callback) {
     try {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};
       console.log(JSON.stringify(results))
-      res.status(200).json(results );
       client.release();
+      /*return*/ res.status(200).json(results );
+      if (!!callback) {
+        callback()
+      }
     } catch (err) {
       console.error(err);
-      res.send("Error " + err);
+      client.release();
+      /*return*/ res.status(500).send("Error " + err);
+      if (!!callback) {
+        callback(err)
+      }
     }
 };
 
