@@ -12,9 +12,15 @@ export default function handler(req, res) {
     //   https://github.com/vercel/next.js/issues/10439#issuecomment-583214126
     return new Promise((resolve, reject) => {
         // don't release productively - DB strain risk getFilteredTupleIds()
-        db.test(req, res, (err) => {
+        try {
+            db.test(req, res, (err) => {
+                return resolve()
+            })    
+        } catch (error) {
+            console.error(error);
+            res.status(500).end();
             return resolve()
-        })
+        }
     })
   }
   
