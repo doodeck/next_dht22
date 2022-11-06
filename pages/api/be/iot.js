@@ -14,10 +14,22 @@ app.get('/', function (req, res) {
 })*/
 
 export default function handler(req, res) {
-    console.log('iot.js:handler')
-    auth(req, res, () => {
-        weather.logWeather(() => { // TODO: relocate logWeather() to a separate cron activated endpoint
-            db.insert(req,res)
-        })
+    // console.log('iot.js:handler')
+    return new Promise((resolve) => {
+        try {
+            auth(req, res, (err) => {
+                if (!err) {
+                    weather.logWeather(() => { // TODO: relocate logWeather() to a separate cron activated endpoint
+                        db.insert(req,res)
+                    })
+                } else {
+                    throw err
+                }
+            })  
+        } catch (error) {
+            console.error(JSON.stringify(error));
+            res.status(error.status || 500).send(error.message || 'Internal server error');
+            return resolve()
+        }
     })
 }

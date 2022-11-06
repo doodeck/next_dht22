@@ -15,7 +15,7 @@ export default function handler(req, res) {
         try {
             db.test(req, res, (err) => {
                 return resolve()
-            })    
+            })
         } catch (error) {
             console.error(error);
             res.status(500).end();

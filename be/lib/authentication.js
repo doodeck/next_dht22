@@ -6,7 +6,7 @@
 var auth_ids = process.env.AUTH_IDS.split(","); // [ "************", "************" ]
 // MAC addresses (without colon) which are allowed to connect, e.g. "12ab34cd56ef"
 
-module.exports = function (req, res, next) {
+module.exports = function (req, res_unused, next) {
     // console.log(req)
     console.log('auth ids:', auth_ids);
 
@@ -15,7 +15,11 @@ module.exports = function (req, res, next) {
         next()
     } else {
         console.error('Unauthorized id:', req.query.id)
-        res.status(401).send('Authorization failed')
+        // res.status(401).send('Authorization failed')
+        next({
+            status: 401,
+            message: 'Authorization failed'
+        })
     }
 }
 
