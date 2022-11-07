@@ -28,7 +28,7 @@ function insert(req, res) {
         res.status(500).end()
       } else {
         console.log(result.rows[0])
-        res.status(200).end()
+        res.status(200).send('OK')
       }
     })
   })
