@@ -1,0 +1,11 @@
+name: Master
+on:
+  schedule:
+    - cron: '* * * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Running
+      run: |
+        echo "Running!"
