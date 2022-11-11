@@ -1,7 +1,7 @@
 name: daily-cron
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '15 * * * *'
 jobs:
   cron:
     runs-on: ubuntu-latest
@@ -9,5 +9,5 @@ jobs:
       - name: Call our API route
         run: |
           curl --request POST \
-          --url 'https://test-next-dht22-bqn9ipy53-doodeck.vercel.app/api/params' \
+          --url 'https://next-dht22.vercel.app/api/params' \
           --header 'Authorization: Bearer ${{ secrets.MY_TEST_SECRET }}'
